@@ -1,6 +1,6 @@
 {
   "name": "capacitor-bixolon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Plugin for working natively with Bixolon POS controls.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
