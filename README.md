@@ -45,6 +45,8 @@ npx cap sync
 getBluetoothDevices() => Promise<BluetoothDevicesResult>
 ```
 
+Get a list of bluetooth devices.
+
 **Returns:** <code>Promise&lt;<a href="#bluetoothdevicesresult">BluetoothDevicesResult</a>&gt;</code>
 
 --------------------
@@ -56,9 +58,11 @@ getBluetoothDevices() => Promise<BluetoothDevicesResult>
 getNetworkDevices(options: GetNetworkDevicesOptions) => Promise<NetworkDevicesResult>
 ```
 
-| Param         | Type                                                                          |
-| ------------- | ----------------------------------------------------------------------------- |
-| **`options`** | <code><a href="#getnetworkdevicesoptions">GetNetworkDevicesOptions</a></code> |
+Get a list of network devices.
+
+| Param         | Type                                                                          | Description       |
+| ------------- | ----------------------------------------------------------------------------- | ----------------- |
+| **`options`** | <code><a href="#getnetworkdevicesoptions">GetNetworkDevicesOptions</a></code> | - Passed options. |
 
 **Returns:** <code>Promise&lt;<a href="#networkdevicesresult">NetworkDevicesResult</a>&gt;</code>
 
@@ -71,9 +75,9 @@ getNetworkDevices(options: GetNetworkDevicesOptions) => Promise<NetworkDevicesRe
 getUsbDevices(options: GetUsbDevicesOptions) => Promise<UsbDevicesResult>
 ```
 
-| Param         | Type                                                                  |
-| ------------- | --------------------------------------------------------------------- |
-| **`options`** | <code><a href="#getusbdevicesoptions">GetUsbDevicesOptions</a></code> |
+| Param         | Type                                                                  | Description       |
+| ------------- | --------------------------------------------------------------------- | ----------------- |
+| **`options`** | <code><a href="#getusbdevicesoptions">GetUsbDevicesOptions</a></code> | - Passed options. |
 
 **Returns:** <code>Promise&lt;<a href="#usbdevicesresult">UsbDevicesResult</a>&gt;</code>
 
@@ -160,6 +164,8 @@ modifyEntry(options: ModifyEntryOptions) => Promise<ValueResult<boolean>>
 removeAllEntries() => Promise<void>
 ```
 
+Remove all entries from config file.
+
 --------------------
 
 
@@ -169,9 +175,11 @@ removeAllEntries() => Promise<void>
 removeEntry(options: WithLogicalName) => Promise<ValueResult<boolean>>
 ```
 
-| Param         | Type                                                        |
-| ------------- | ----------------------------------------------------------- |
-| **`options`** | <code><a href="#withlogicalname">WithLogicalName</a></code> |
+Remove an entry from config file by `logicalName`
+
+| Param         | Type                                                        | Description       |
+| ------------- | ----------------------------------------------------------- | ----------------- |
+| **`options`** | <code><a href="#withlogicalname">WithLogicalName</a></code> | - Passed options. |
 
 **Returns:** <code>Promise&lt;<a href="#valueresult">ValueResult</a>&lt;boolean&gt;&gt;</code>
 
@@ -183,6 +191,8 @@ removeEntry(options: WithLogicalName) => Promise<ValueResult<boolean>>
 ```typescript
 save() => Promise<void>
 ```
+
+Save config file.
 
 --------------------
 
@@ -263,21 +273,9 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 
 #### BluetoothDevicesResult
 
-| Prop          | Type                                |
-| ------------- | ----------------------------------- |
-| **`devices`** | <code>BluetoothDeviceEntry[]</code> |
-
-
-#### BluetoothDeviceEntry
-
-| Prop            | Type                  |
-| --------------- | --------------------- |
-| **`address`**   | <code>string</code>   |
-| **`alias`**     | <code>string</code>   |
-| **`name`**      | <code>string</code>   |
-| **`bondState`** | <code>number</code>   |
-| **`type`**      | <code>number</code>   |
-| **`uuids`**     | <code>string[]</code> |
+| Prop          | Type                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **`devices`** | <code>{ address: string; alias?: string; name: string; bondState: number; type: number; uuids: string[]; }[]</code> |
 
 
 #### NetworkDevicesResult
@@ -297,26 +295,9 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 
 #### UsbDevicesResult
 
-| Prop          | Type                          |
-| ------------- | ----------------------------- |
-| **`devices`** | <code>UsbDeviceEntry[]</code> |
-
-
-#### UsbDeviceEntry
-
-| Prop                   | Type                |
-| ---------------------- | ------------------- |
-| **`deviceName`**       | <code>string</code> |
-| **`manufacturerName`** | <code>string</code> |
-| **`productName`**      | <code>string</code> |
-| **`version`**          | <code>string</code> |
-| **`serialNumber`**     | <code>string</code> |
-| **`deviceId`**         | <code>number</code> |
-| **`vendorId`**         | <code>number</code> |
-| **`productId`**        | <code>number</code> |
-| **`deviceClass`**      | <code>number</code> |
-| **`deviceSubclass`**   | <code>number</code> |
-| **`deviceProtocol`**   | <code>number</code> |
+| Prop          | Type                                                                                                                                                                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`devices`** | <code>{ deviceName: string; manufacturerName: string; productName: string; version?: string; serialNumber: string; deviceId: number; vendorId: number; productId: number; deviceClass: number; deviceSubclass: number; deviceProtocol: number; }[]</code> |
 
 
 #### GetUsbDevicesOptions
@@ -346,16 +327,16 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 
 #### GetAllEntriesResult
 
-| Prop          | Type                               |
-| ------------- | ---------------------------------- |
-| **`entries`** | <code>EntryWithProperties[]</code> |
+| Prop          | Type                                                                                                                               |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **`entries`** | <code>(<a href="#withlogicalname">WithLogicalName</a> & { properties: <a href="#record">Record</a>&lt;string, any&gt;; })[]</code> |
 
 
-#### EntryWithProperties
+#### WithLogicalName
 
-| Prop             | Type                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| **`properties`** | <code><a href="#record">Record</a>&lt;string, any&gt;</code> |
+| Prop              | Type                |
+| ----------------- | ------------------- |
+| **`logicalName`** | <code>string</code> |
 
 
 #### GetEntryResult
@@ -366,13 +347,6 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 | **`productName`**    | <code>string</code> |
 | **`address`**        | <code>string</code> |
 | **`deviceBus`**      | <code>number</code> |
-
-
-#### WithLogicalName
-
-| Prop              | Type                |
-| ----------------- | ------------------- |
-| **`logicalName`** | <code>string</code> |
 
 
 #### ModifyEntryOptions
@@ -406,31 +380,6 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 | **`args`**       | <code>CallControlArgument[]</code> |
 
 
-#### HashNativeArgument
-
-| Prop            | Type                |
-| --------------- | ------------------- |
-| **`hashKey`**   | <code>string</code> |
-| **`classType`** | <code>string</code> |
-
-
-#### ComplexNativeArgument
-
-| Prop            | Type                                                        |
-| --------------- | ----------------------------------------------------------- |
-| **`value`**     | <code><a href="#nativeprimitive">NativePrimitive</a></code> |
-| **`classType`** | <code>string</code>                                         |
-
-
-#### ComplexNativeArrayArgument
-
-| Prop                     | Type                                                                                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **`value`**              | <code>(<a href="#nativeprimitive">NativePrimitive</a> \| <a href="#complexnativeargument">ComplexNativeArgument</a>)[] \| null</code> |
-| **`componentClassType`** | <code>string</code>                                                                                                                   |
-| **`classType`**          | <code>string</code>                                                                                                                   |
-
-
 #### AddControlListenerOptions
 
 | Prop                  | Type                  |
@@ -453,9 +402,7 @@ removeControlListener(options: RemoveControlListenerOptions) => Promise<void>
 
 Construct a type with a set of properties K of type T
 
-<code>{
- [P in K]: T;
- }</code>
+<code>{ [P in K]: T; }</code>
 
 
 #### CallControlArgument
@@ -465,12 +412,27 @@ Construct a type with a set of properties K of type T
 
 #### NativeArgument
 
-<code><a href="#nativeprimitive">NativePrimitive</a> | <a href="#hashnativeargument">HashNativeArgument</a> | <a href="#complexnativeargument">ComplexNativeArgument</a> | <a href="#complexnativearrayargument">ComplexNativeArrayArgument</a></code>
+<code><a href="#nativeprimitive">NativePrimitive</a> | <a href="#hashnativeargument">HashNativeArgument</a> | <a href="#fixedclassnativeargument">FixedClassNativeArgument</a> | <a href="#fixedclassnativearrayargument">FixedClassNativeArrayArgument</a></code>
 
 
 #### NativePrimitive
 
 <code>string | number | boolean | null</code>
+
+
+#### HashNativeArgument
+
+<code>{ hashKey: string; classType?: string; }</code>
+
+
+#### FixedClassNativeArgument
+
+<code>{ value: <a href="#nativeprimitive">NativePrimitive</a>; classType?: string; }</code>
+
+
+#### FixedClassNativeArrayArgument
+
+<code>{ value: (<a href="#nativeprimitive">NativePrimitive</a> | <a href="#hashnativeargument">HashNativeArgument</a> | <a href="#fixedclassnativeargument">FixedClassNativeArgument</a>)[] | null; componentClassType?: string; classType?: string; }</code>
 
 
 ### Enums
