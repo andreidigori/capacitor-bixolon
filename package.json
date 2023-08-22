@@ -1,7 +1,7 @@
 {
   "name": "capacitor-bixolon",
   "version": "0.0.1",
-  "description": "fdsfds",
+  "description": "TODO",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -14,7 +14,7 @@
     "CapacitorBixolon.podspec"
   ],
   "author": "Andrei Digori",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/example/repo.git"
